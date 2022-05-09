@@ -5,8 +5,19 @@
     </h2>
 </x-slot>
 
+@if (session('success'))
+    <div class="alert alert-success shadow-lg mb-9">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>
+                {{ session('success') }}
+            </span>
+        </div>
+    </div>
+@endif
+
 <div class="mt-10" style="margin-top: 20px; margin-left:20px">
-  <button onclick="window.location.href='/newrapport'" style="border:none; border-radius:12px; background-color:rgb(27, 115, 230); width:8%; color: white" type="button" >Nouveau rapport</button>
+  <button onclick="window.location.href='/newrapport'" type="button" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-blue-500 border border-blue-700" >Nouveau rapport</button>
 </div>
 
 <div class="flex flex-col">
@@ -17,7 +28,7 @@
                   <thead class="bg-blue-500 dark:bg-gray-700 ">
                       <tr>
                           <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 text-center">
-                              Numéro de rapport
+                              Nom praticien
                           </th>
                           <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 text-center">
                               Date du rappot
@@ -34,7 +45,7 @@
                       <!-- Product 1 -->
                       <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                           <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-                              {{ $info->RAP_NUM }}
+                              {{ $info->PRA_NOM }} {{ $info->PRA_PRENOM }}
                           </td>
                           <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400 text-center">
                               {{ $info->RAP_DATE}}
@@ -47,7 +58,7 @@
                           </td>
                       </tr>
                       @endforeach
-
+                        
                   </tbody>
               </table>
           </div>
